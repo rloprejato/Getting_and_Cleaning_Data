@@ -1,0 +1,43 @@
+---
+title: "README"
+author: "Roberto Lo Prejato"
+date: "03 settembre 2018"
+output: html_document
+---
+
+#Getting-and-Cleaning-Data-Week-4-Assignment
+
+This repo was created to finish the assignment for week 4 of Getting and Cleaning Data Coursera course.
+From the original dataset following the instructions assigned, a new dataset is created
+
+##Original Data description
+
+The original UCI HAR dataset can be found here
+
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+The variables in the data X are sensor signals measured with waist-mounted smartphone from 30 subjects. 
+The variable in the data Y indicates activity type the subjects performed during recording.
+The subject file (train and test) indicates the subjects who took part in the experiment.
+
+##Code explaination
+
+The code combined training dataset and test dataset, and extracted partial variables to create another dataset with the averages of each variable for each activity.
+The code was written based on the instruction of this assignment:
+
+1. Merges the training and the test sets to create one data set.
+2. Extracts only the measurements on the mean and standard deviation for each measurement.
+3. Uses descriptive activity names to name the activities in the data set
+4. Appropriately labels the data set with descriptive variable names.
+5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+The code is contained in the file 'run_analysis.R'
+
+
+##New dataset
+The new generated dataset contained variables calculated based on the mean and standard deviation. Each row of the dataset is the average of each variable for each activity and each subject.
+To create the new dataset 'tidydata.txt' you have to run the code file 'run_analysis.R'
+A descripion of the new dataset is provided in the file CodeBook.Rmd
+
+
+

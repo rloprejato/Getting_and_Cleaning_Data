@@ -1,0 +1,149 @@
+---
+title: "Getting and Cleaning Data - Assignment"
+author: "Roberto Lo Prejato"
+date: "30 agosto 2018"
+output: html_document
+---
+#GETTING AND CLEANING DATA
+#Assignment - Roberto Lo Prejato
+
+##Description 
+
+This code book summarizes the data and variables in tidyData.txt  -- 
+This is the output of the Week 4 project in the JHU course Getting & Cleaning Data of the Data Science Specialization while providing information on the Data Set and Attributes used from the original study
+
+#STUDY INFORMATION
+
+##Information on original Data Set
+
+The original UCI HAR dataset can be found here
+ 
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+
+The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. 
+The obtained dataset has been randomly partitioned into two sets (70% for train and 30% for test).
+
+The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain.
+
+For more information about this dataset contact: activityrecognition@smartlab.ws
+
+
+#INFORMATION ABOUT tidydata.txt
+
+From the original dataset with the script file run_analysis.R it's possible to create a new tidy dataset that contain only the measurements on the mean and standard deviation for each measurement.
+In this new independent tidy dataset there are the average of each variable for each activity and each subject.
+It consists of 180 rows and 68 columns
+
+To obtain tidydata.txt you will run the file: run_analysis.R which contains the following actions:
+
+##1. Merging training & test sets
+From the original dataset, the following text files were imported and merged. 
+
+###Text Files Imported:
+
+* 'features.txt'
+* 'activity_labels.txt'
+* 'subject_train.txt'
+* 'x_train.txt'
+* 'y_train.txt'
+* 'subject_test.txt'
+* 'x_test.txt'
+* 'y_test.txt'
+
+##2. Extracting measurements on mean & standard deviation
+A vector was created identifying only mean & stdev columns.
+Merged data was then subsetted to only keep the relevant columns.
+
+##3. Appropriately label dataset with descriptive activity names 
+Used the 'gsub' function to clean up the column names in merged & subsetted data set.
+
+##4. Rename activities in dataset with descriptive activity names 
+'activity_labels.txt' was merged with the subsetted data to add descriptive activity names to merged and subsetted data set, in the 'activity' column.
+
+##5. Independent tidy dataset created with average for each variable & each subject 
+New table was created.
+The data were averaged based on subject and activity group.
+Subject column is numbered sequentially from 1 to 30. 
+Activity column has 6 types as listed below:
+WALKING
+WALKING_UPSTAIRS
+WALKING_DOWNSTAIRS
+SITTING
+STANDING
+LAYING
+
+The tidy data contains 180 rows and 68 columns: :averaged based on activity (6) for each subject (30):
+
+1. activity 
+2. subject
+3. time-BodyAcc-Mean-X
+4. time-BodyAcc-Mean-Y
+5. time-BodyAcc-Mean-Z
+6. time-BodyAcc-StdDev-X
+7. time-BodyAcc-StdDev-Y
+8. time-BodyAcc-StdDev-Z
+9. time-GravityAcc-Mean-X
+10. time-GravityAcc-Mean-Y
+11. time-GravityAcc-Mean-Z
+12. time-GravityAcc-StdDev-X
+13. time-GravityAcc-StdDev-Y
+14. time-GravityAcc-StdDev-Z
+15. time-BodyAccJerk-Mean-X
+16. time-BodyAccJerk-Mean-Y
+17. time-BodyAccJerk-Mean-Z
+18. time-BodyAccJerk-StdDev-X
+19. time-BodyAccJerk-StdDev-Y
+20. time-BodyAccJerk-StdDev-Z
+21. time-BodyGyro-Mean-X
+22. time-BodyGyro-Mean-Y
+23. time-BodyGyro-Mean-Z
+24. time-BodyGyro-StdDev-X
+25. time-BodyGyro-StdDev-Y
+26. time-BodyGyro-StdDev-Z
+27. time-BodyGyroJerk-Mean-X
+28. time-BodyGyroJerk-Mean-Y
+29. time-BodyGyroJerk-Mean-Z
+30. time-BodyGyroJerk-StdDev-X
+31. time-BodyGyroJerk-StdDev-Y
+32. time-BodyGyroJerk-StdDev-Z
+33. time-BodyAccMag-Mean
+34. time-BodyAccMag-StdDev
+35. time-GravityAccMag-Mean
+36. time-GravityAccMag-StdDev
+37. time-BodyAccJerkMag-Mean
+38. time-BodyAccJerkMag-StdDev
+39. time-BodyGyroMag-Mean
+40. time-BodyGyroMag-StdDev
+41. time-BodyGyroJerkMag-Mean
+42. time-BodyGyroJerkMag-StdDev
+43. freq-BodyAcc-Mean-X
+44. freq-BodyAcc-Mean-Y
+45. freq-BodyAcc-Mean-Z
+46. freq-BodyAcc-StdDev-X
+47. freq-BodyAcc-StdDev-Y
+48. freq-BodyAcc-StdDev-Z
+49. freq-BodyAccJerk-Mean-X
+50. freq-BodyAccJerk-Mean-Y
+51. freq-BodyAccJerk-Mean-Z
+52. freq-BodyAccJerk-StdDev-X
+53. freq-BodyAccJerk-StdDev-Y
+54. freq-BodyAccJerk-StdDev-Z
+55. freq-BodyGyro-Mean-X
+56. freq-BodyGyro-Mean-Y
+57. freq-BodyGyro-Mean-Z
+58. freq-BodyGyro-StdDev-X
+59. freq-BodyGyro-StdDev-Y 
+60. freq-BodyGyro-StdDev-Z
+61. freq-BodyAccMag-Mean
+62. freq-BodyAccMag-StdDev
+63. freq-BodyBodyAccJerkMag-Mean
+64. freq-BodyBodyAccJerkMag-StdDev
+65. freq-BodyBodyGyroMag-Mean
+66. freq-BodyBodyGyroMag-StdDev
+67. freq-BodyBodyGyroJerkMag-Mean
+68. freq-BodyBodyGyroJerkMag-StdDev
+
+Activity variable is factor type. Subject variable is integer type. All the other variables are numeric type.
+
+
